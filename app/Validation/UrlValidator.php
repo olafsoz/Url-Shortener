@@ -13,7 +13,7 @@ class UrlValidator
             $_SESSION['errors'] = 'The format is incorrect. Did you type https://www at the start?';
             return false;
         } elseif ($code[0] !== "HTTP/1.1 200 OK") {
-            $_SESSION['errors'] = 'This Url does not exist';
+            $_SESSION['errors'] = 'This Url does not exist/you do not have access to it';
             return false;
         } else {
             return true;

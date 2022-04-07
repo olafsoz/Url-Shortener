@@ -21,7 +21,9 @@ class MySQLUrlRepository implements UrlRepository
                 ->createQueryBuilder()
                 ->select('*')
                 ->from('url')
-                ->executeQuery()
+                ->orderBy('id', 'desc')
+                ->setFirstResult(0)
+                ->setMaxResults(3)
                 ->fetchAllAssociative();
 
             $all = [];
