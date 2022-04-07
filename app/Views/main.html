@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="App\Views\styles.css">
+    <link rel="shortcut icon" href="data:" />
+    <title>Url Shortener</title>
+</head>
+<body>
+    <header>
+        <h1>Url Shortener</h1>
+    </header>
+    <main>
+        <section class="form">
+            <form action="/shorten" method="post">
+                <input type="text" name="longUrl" id="longUrl" placeholder="e.g. https://youtube.com" />
+                <input type="submit" value="Shorten"/>
+            </form>
+        </section>
+        <div class="error">
+            <p>{{ errors }}</p>
+        </div>
+        <section class="urls">
+            {% for a in all %}
+            <div class="url">
+                <div class="info one"><a href="/{{ a.shortUrl }}">{{ host }}:{{ port }}/{{ a.shortUrl }}</a></div>
+                <div class="info two"><p>{{ a.longUrl }}</p></div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
