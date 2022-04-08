@@ -58,7 +58,7 @@ class MySQLUrlRepository implements UrlRepository
                 ->select('*')
                 ->from('url')
                 ->where('longUrl = ?')
-                ->setParameter(0, $_POST['longUrl'])
+                ->setParameter(0, $request->getLongUrl())
                 ->fetchAssociative();
 
             if (empty($exists)) {
