@@ -10,9 +10,9 @@ class UrlValidator
         $code = @get_headers($url);
 
         if (! $result) {
-            $_SESSION['errors'] = 'The format is incorrect. Did you type https://www at the start?';
+            $_SESSION['errors'] = 'The format is incorrect. Did you type https:// at the start?';
             return false;
-        } elseif ($code[0] !== "HTTP/1.1 200 OK") {
+        } elseif (is_bool($code)) {
             $_SESSION['errors'] = 'This Url does not exist/you do not have access to it';
             return false;
         } else {

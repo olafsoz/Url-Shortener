@@ -7,14 +7,14 @@ use App\Models\Url;
 use App\Redirect;
 use App\Services\UrlServices\Redirect\RedirectRequest;
 use App\Services\UrlServices\Shorten\ShortenRequest;
-use App\Services\WebServices\MainRequest;
-use App\Services\WebServices\MainResponse;
+use App\Services\WebServices\GetEverythingRequest;
+use App\Services\WebServices\GetEverythingResponse;
 use App\Validation\UrlValidator;
 use Doctrine\DBAL\Exception;
 
 class MySQLUrlRepository implements UrlRepository
 {
-    public function main(MainRequest $request): MainResponse
+    public function getEverything(GetEverythingRequest $request): GetEverythingResponse
     {
         try {
             $allFromDatabase = Database::connection()
@@ -24,6 +24,7 @@ class MySQLUrlRepository implements UrlRepository
                 ->orderBy('id', 'desc')
                 ->setFirstResult(0)
                 ->setMaxResults(3)
+                ->executeQuery()
                 ->fetchAllAssociative();
 
             $all = [];
@@ -38,7 +39,7 @@ class MySQLUrlRepository implements UrlRepository
         } catch (Exception $e) {
             echo $e->getMessage();die;
         }
-        return new MainResponse(
+        return new GetEverythingResponse(
             $all,
             $request->getPort(),
             $request->getErrors()

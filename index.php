@@ -25,7 +25,7 @@ $builder->addDefinitions([
 $container = $builder->build();
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', [WebController::class, 'main']);
+    $r->addRoute('GET', '/', [WebController::class, 'getEverything']);
     $r->addRoute('POST', '/shorten', [UrlController::class, 'shorten']);
     $r->addRoute('GET', '/{url}', [UrlController::class, 'redirect']);
 });

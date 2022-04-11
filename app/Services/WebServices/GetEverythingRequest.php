@@ -2,7 +2,7 @@
 
 namespace App\Services\WebServices;
 
-class MainRequest
+class GetEverythingRequest
 {
     private string $port;
     private string $errors;

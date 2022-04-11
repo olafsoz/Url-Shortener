@@ -28,10 +28,6 @@ class UrlController
     {
         $service = $this->container->get(RedirectService::class);
         $response = $service->execute(new RedirectRequest($url['url']));
-        if ($response !== null) {
-            header("Location: $response");
-            exit;
-        }
-        return new Redirect('/');
+        return ($response !== null) ? new Redirect($response) : new Redirect('/');
     }
 }

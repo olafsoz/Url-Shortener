@@ -2,7 +2,7 @@
 
 namespace App\Services\WebServices;
 
-class MainResponse
+class GetEverythingResponse
 {
     private array $all;
     private string $port;

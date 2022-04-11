@@ -5,7 +5,7 @@ namespace App\Services\WebServices;
 use App\Repositories\MySQLUrlRepository;
 use App\Repositories\UrlRepository;
 
-class MainService
+class GetEverythingService
 {
     private UrlRepository $urlRepository;
 
@@ -14,8 +14,8 @@ class MainService
         $this->urlRepository = $urlRepository;
     }
 
-    public function execute(MainRequest $request): MainResponse
+    public function execute(GetEverythingRequest $request): GetEverythingResponse
     {
-        return $this->urlRepository->main($request);
+        return $this->urlRepository->getEverything($request);
     }
 }
