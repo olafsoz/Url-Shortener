@@ -1,1 +1,1 @@
-<img src="tvnet_be_gif.gif" alt="gif">
+<img src="urlGif.gif" alt="gif">
